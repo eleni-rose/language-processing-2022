@@ -248,6 +248,7 @@ def factor():
    if token.category == PLUS:
      advance()
      factor()
+
    elif token.category == MINUS:
      advance()
      factor()

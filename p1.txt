@@ -1,4 +1,4 @@
-Wed Sep 28 23:26:13 2022                    Eleni Kokkosis
+Thu Sep 29 00:10:49 2022                    Eleni Kokkosis
 Parser = p1.py
 Input file  = p1.in
 ------------------------------------------- p1.py
@@ -252,6 +252,7 @@ def factor():
    if token.category == PLUS:
      advance()
      factor()
+
    elif token.category == MINUS:
      advance()
      factor()
