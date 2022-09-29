@@ -1,0 +1,6 @@
+Language Processing Lab 1
+
+Read pythonAppA
+Problems 1 to 9 in pythonproblems.
+
+

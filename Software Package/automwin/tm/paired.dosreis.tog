@@ -1,0 +1,141 @@
+Turing Machine Simulator Version 7.0       Tue Oct 06 13:46:46 2020
+
+Your name:       DosReis Anthony J.
+tog file:        paired.dosreis.tog
+Tape file:       paired.t
+Definition file: paired.tm
+
+// paired.tm
+// This Turing machine accepts {a**nb**n : n >= 0}
+// Format of a quintuple:
+//     CurrentState CurrentInput NewSymbol Move NextState
+
+0             Start state
+{5}           Set of final states
+
+0 _ _ R 5     Use state 0 to check for ^ input
+0 a x R 2
+1 a x R 2     mark a
+2 a a R 2     now move right to matching b
+2 y y R 2
+2 b y L 3     mark matching b
+3 y y L 3     now move left first marked a
+3 a a L 3
+3 x x R 1     start cycle again
+1 y y R 4     check if all b's have been marked
+4 y y R 4
+4 _ _ R 5     if all b's marked, go to final state 5
+
+Number of states: 6
+Number of quintuples: 12
+
+------------------------------ TAPE  1 ---------------------------------
+^        a  ^ represents null string
+------------------------------------------------------------------------
+     [0> 
+      [5> 
+       ACCEPT       1 quintuple(s) executed
+
+------------------------------ TAPE  2 ---------------------------------
+ab       a
+------------------------------------------------------------------------
+     [0>ab
+     x[2>b
+     [3>xy
+     x[1>y
+     xy[4> 
+     xy [5> 
+       ACCEPT       5 quintuple(s) executed
+
+------------------------------ TAPE  3 ---------------------------------
+aaabbb   a
+------------------------------------------------------------------------
+     [0>aaabbb
+     x[2>aabbb
+     xa[2>abbb
+     xaa[2>bbb
+     xa[3>aybb
+     x[3>aaybb
+     [3>xaaybb
+     x[1>aaybb
+     xx[2>aybb
+     xxa[2>ybb
+     xxay[2>bb
+     xxa[3>yyb
+     xx[3>ayyb
+     x[3>xayyb
+     xx[1>ayyb
+     xxx[2>yyb
+     xxxy[2>yb
+     xxxyy[2>b
+     xxxy[3>yy
+     xxx[3>yyy
+     xx[3>xyyy
+     xxx[1>yyy
+     xxxy[4>yy
+     xxxyy[4>y
+     xxxyyy[4> 
+     xxxyyy [5> 
+       ACCEPT       25 quintuple(s) executed
+
+------------------------------ TAPE  4 ---------------------------------
+abab     r  comments are allowed here
+------------------------------------------------------------------------
+     [0>abab
+     x[2>bab
+     [3>xyab
+     x[1>yab
+     xy[4>ab
+       REJECT       4 quintuple(s) executed
+
+------------------------------ TAPE  5 ---------------------------------
+abb      r
+------------------------------------------------------------------------
+     [0>abb
+     x[2>bb
+     [3>xyb
+     x[1>yb
+     xy[4>b
+       REJECT       4 quintuple(s) executed
+
+------------------------------ TAPE  6 ---------------------------------
+aab      r
+------------------------------------------------------------------------
+     [0>aab
+     x[2>ab
+     xa[2>b
+     x[3>ay
+     [3>xay
+     x[1>ay
+     xx[2>y
+     xxy[2> 
+       REJECT       7 quintuple(s) executed
+
+------------------------------ TAPE  7 ---------------------------------
+a        r
+------------------------------------------------------------------------
+     [0>a
+     x[2> 
+       REJECT       1 quintuple(s) executed
+
+------------------------------ TAPE  8 ---------------------------------
+b        r
+------------------------------------------------------------------------
+     [0>b
+       REJECT       0 quintuple(s) executed
+
+------------------------------ TAPE  9 ---------------------------------
+ba       r
+------------------------------------------------------------------------
+     [0>ba
+       REJECT       0 quintuple(s) executed
+
+------------------------------ TAPE 10 ---------------------------------
+bbaa     r
+------------------------------------------------------------------------
+     [0>bbaa
+       REJECT       0 quintuple(s) executed
+
+V7.0 paired.dosreis.tog: s6/q12/mqe25
+be95 Report for DosReis Anthony J.: Correct
+660c Tue Oct 06 13:46:46 2020
