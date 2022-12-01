@@ -348,12 +348,14 @@ def interpreter():
          print(stack.pop(), end='')
 
       elif opcode == PRINT_NEWLINE:
-         print(stack.pop(), end='\n')
+         print()
 
       elif opcode == STORE_NAME:
          index = co_code[pc]
          pc += 1
-
+         value = stack.pop()
+         co_values[index] = value
+         
       elif opcode == LOAD_CONST:
          index = co_code[pc]
          pc += 1
